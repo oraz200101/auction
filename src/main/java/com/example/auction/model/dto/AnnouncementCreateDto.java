@@ -1,8 +1,9 @@
 package com.example.auction.model.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.tags.Tag;
+
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,7 +24,7 @@ public class AnnouncementCreateDto {
     @Schema(description = DESCRIPTION_OF_ANNOUNCEMENT_DESCRIPTION,example = DESCRIPTION_OF_ANNOUNCEMENT_EXAMPLE)
     @NotBlank(message = ANNOUNCEMENT_DESCRIPTION_REQUIRED_MESSAGE)
     private String description;
-    @NotEmpty(message = ANNOUNCEMENT_PRICE_REQUIRED_MESSAGE)
+   @Min(value = 0 ,message = ANNOUNCEMENT_PRICE_REQUIRED_MESSAGE)
     @Schema(description = PRICE_OF_ANNOUNCEMENT_DESCRIPTION,example = PRICE_OF_ANNOUNCEMENT_EXAMPLE)
     private BigDecimal price;
 }
